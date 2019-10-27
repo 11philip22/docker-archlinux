@@ -7,6 +7,7 @@ node ("master") {
     
     stage ("prepare rootfs") {
         sh """
+            rm -rf build_dir
             chmod +x ./build_rootfs.sh
             ./build_rootfs.sh
         """
