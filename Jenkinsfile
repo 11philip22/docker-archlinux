@@ -8,16 +8,16 @@ node ("master") {
     stage ("prepare rootfs") {
         sh """
             tmp_dir=\$(mktemp -d)
-            env -i pacstrap -C /usr/share/devtools/pacman-extra.conf -c -G -M ${tmp_dir} \
+            env -i pacstrap -C /usr/share/devtools/pacman-extra.conf -c -G -M \${tmp_dir} \
                 pacman systemd
 
-            cp --recursive --preserve=timestamps --backup --suffix=.pacnew rootfs/* ${tmp_dir}/
-            arch-chroot ${tmp_dir} locale-gen
-            arch-chroot ${tmp_dir} pacman-key --init
-            arch-chroot ${tmp_dir} pacman-key --populate archlinux
+            cp --recursive --preserve=timestamps --backup --suffix=.pacnew rootfs/* \${tmp_dir}/
+            arch-chroot \${tmp_dir} locale-gen
+            arch-chroot \${tmp_dir} pacman-key --init
+            arch-chroot \${tmp_dir} pacman-key --populate archlinux
 
-            tar --numeric-owner --xattrs --acls --exclude-from=exclude -C ${tmp_dir} -c . -f archlinux.tar
-            rm -rf ${tmp_dir}
+            tar --numeric-owner --xattrs --acls --exclude-from=exclude -C \${tmp_dir} -c . -f archlinux.tar
+            rm -rf \${tmp_dir}
         """
     }
     
