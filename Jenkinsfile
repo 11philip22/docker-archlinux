@@ -6,6 +6,10 @@ node ("master") {
     }
     
     stage ("prepare rootfs") {
+        docker.image('my-custom-image').inside {
+            sh 'make test'
+        }
+        
         sh """
             rm -rf build_dir
             chmod +x ./build_rootfs.sh
