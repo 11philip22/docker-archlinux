@@ -1,0 +1,9 @@
+version : "3.7"
+
+services:
+  arch-build:
+    privileged: true
+    image: philipwold/arch-build
+    volumes:
+      - ./build:/build
+    restart: unless-stopped
