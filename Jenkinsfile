@@ -6,7 +6,10 @@ node ("master") {
     }
     
     stage ("prepare rootfs") {
-        sh "./build_rootfs.sh"
+        sh """
+            chmod +x ./build_rootfs.sh
+            ./build_rootfs.sh
+        """
     }
     
     stage ("docker build") {
