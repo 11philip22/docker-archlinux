@@ -7,7 +7,7 @@ node ("master") {
     
     stage ("prepare rootfs") {
         sh """
-            tmp_dir=$(mktemp -d)
+            tmp_dir=\$(mktemp -d)
             env -i pacstrap -C /usr/share/devtools/pacman-extra.conf -c -G -M ${tmp_dir} \
                 pacman systemd
 
