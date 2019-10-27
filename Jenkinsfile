@@ -1,4 +1,4 @@
-String repo = "mpd"
+String repo = "archlinux"
 
 node ("master") {
     stage ("checkout scm") {
