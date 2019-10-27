@@ -11,7 +11,7 @@ node ("master") {
         //     sh "builtfs"
         // }
         sh "docker-compose up -d"
-        sh "docker-compose exec -T arch-build builtfs >> /build/log"
+        sh "docker-compose exec -T arch-build 'builtfs >> /build/log'"
         sh "docker-compose down"
         sh "mv ./build/archlinux.tar ."
     }
