@@ -9,7 +9,11 @@ node ("master") {
         sh """ \
             #!/usr/bin/bash
             docker-compose up -d
+            docker exec -it arch-build builtfs
+            docker-compose down
+            archlinux.tar
         """
+        sh "mv ./build/archlinux.tar ."
     }
     
     stage ("docker build") {
