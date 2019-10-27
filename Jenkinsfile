@@ -9,7 +9,6 @@ node ("master") {
         sh """ \
             #!/usr/bin/bash
             docker compose up -d
-            docker exec -it 
         """
     }
     
