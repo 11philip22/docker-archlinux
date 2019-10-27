@@ -8,7 +8,7 @@ node ("master") {
     stage ("prepare rootfs") {
         sh """ \
             #!/usr/bin/bash
-            docker compose up -d
+            docker-compose up -d
         """
     }
     
