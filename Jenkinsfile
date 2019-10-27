@@ -6,13 +6,13 @@ node ("master") {
     }
     
     stage ("prepare rootfs") {
-        // sh "docker-compose up -d"
-        // sh "docker-compose exec -T arch-build builtfs"
-        def build_container = docker.image("arch-build").withRun("--privileged")
-        build_container.inside {
-            sh "builtfs"
-        }
-        // sh "docker-compose down"
+        // def build_container = docker.image("arch-build").withRun("--privileged")
+        //     build_container.inside {
+        //     sh "builtfs"
+        // }
+        sh "docker-compose up -d"
+        sh "docker-compose exec -T arch-build builtfs >> /build/log"
+        sh "docker-compose down"
         sh "mv ./build/archlinux.tar ."
     }
     
