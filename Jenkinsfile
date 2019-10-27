@@ -6,13 +6,12 @@ node ("master") {
     }
     
     stage ("prepare rootfs") {
-        sh """ \
-            #!/usr/bin/bash
-            docker-compose up -d
-            docker-compose exec -T arch-build builtfs
-            docker-compose down
-            archlinux.tar
-        """
+        sh "docker-compose up -d"
+        // sh "docker-compose exec -T arch-build builtfs"
+        docker.image("arch-build").inside {
+            sh "builtfs"
+        }
+        sh "docker-compose down"
         sh "mv ./build/archlinux.tar ."
     }
     
