@@ -8,7 +8,7 @@ node ("master") {
     stage ("prepare rootfs") {
         sh """
             tmp_dir=\$(mktemp -d)
-            env -i pacstrap -c -G -M \${tmp_dir} \
+            env -i pacstrap -c -G -M \${tmp_dir}/ \
                 pacman systemd
 
             cp --recursive --preserve=timestamps --backup --suffix=.pacnew rootfs/* \${tmp_dir}/
