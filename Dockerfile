@@ -1,6 +1,11 @@
 FROM scratch
 
-ADD archlinux.tar /
-ENV LANG=en_US.UTF-8
+ADD root.x86_64/ /
+ADD install.sh /
 
-CMD ["/usr/bin/bash"]
+RUN /install.sh
+
+ENV LANG=en_US.UTF-8
+ENV TERM xterm
+
+ENTRYPOINT ["/usr/bin/tini", "--"]
