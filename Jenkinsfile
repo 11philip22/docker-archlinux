@@ -15,7 +15,7 @@ node ("master") {
             returnStdout: true
         ).trim()
         sh """
-            wget -O /bootstrap/archlinux.tar.gz \
+            wget -O archlinux.tar.gz \
                 http://archlinux.de-labrusse.fr/iso/latest/archlinux-bootstrap-${rel_date}-x86_64.tar.gz
 
             mkdir -p build
