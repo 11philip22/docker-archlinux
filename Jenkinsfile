@@ -2,7 +2,7 @@ String repo = "archlinux"
 rel_date = sh (
     script: "date +%Y.%m.01"
     returnStatus: true
-) == 0
+).trim()
 
 node ("master") {
     stage ("checkout scm") {
