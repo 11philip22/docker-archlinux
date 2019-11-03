@@ -1,5 +1,8 @@
 String repo = "archlinux"
-String rel_date = sh "date +%Y.%m.01"
+rel_date = sh (
+    script: "date +%Y.%m.01"
+    returnStatus: true
+) == 0
 
 node ("master") {
     stage ("checkout scm") {
