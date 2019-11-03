@@ -17,9 +17,8 @@ node ("master") {
         sh """
             wget -O archlinux.tar.gz \
                 http://archlinux.de-labrusse.fr/iso/latest/archlinux-bootstrap-${rel_date}-x86_64.tar.gz
-
-            mkdir -p build
-            tar --exclude=root.x86_64/etc/resolv.conf --exclude=root.x86_64/etc/hosts -xvf archlinux.tar.gz 
+            
+            tar --exclude=root.x86_64/etc/resolv.conf --exclude=root.x86_64/etc/hosts -cvzf archlinux.tar.gz 
         """
     }
     
