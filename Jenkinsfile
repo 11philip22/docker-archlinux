@@ -1,6 +1,6 @@
 String repo = "archlinux"
 rel_date = sh (
-    script: "date +%Y.%m.01"
+    script: "date +%Y.%m.01",
     returnStdout: true
 ).trim()
 
