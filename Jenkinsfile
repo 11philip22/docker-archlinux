@@ -5,9 +5,9 @@ node ("master") {
         checkout scm
     }
     
-    stage ("run dos2unix") {
-        sh "dos2unix *"
-    }
+    // stage ("run dos2unix") {
+    //     sh "dos2unix *"
+    // }
     
     stage ("prepare rootfs") {
         rel_date = sh (
