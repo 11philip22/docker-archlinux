@@ -1,8 +1,4 @@
 String repo = "archlinux"
-rel_date = sh (
-    script: "date +%Y.%m.01",
-    returnStdout: true
-).trim()
 
 node ("master") {
     stage ("checkout scm") {
@@ -14,6 +10,10 @@ node ("master") {
     }
     
     stage ("prepare rootfs") {
+        rel_date = sh (
+            script: "date +%Y.%m.01",
+            returnStdout: true
+        ).trim()
         sh """
             wget -O /bootstrap/archlinux.tar.gz \
                 http://archlinux.de-labrusse.fr/iso/latest/archlinux-bootstrap-${rel_date}-x86_64.tar.gz
