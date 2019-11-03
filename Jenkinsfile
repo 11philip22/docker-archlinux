@@ -1,7 +1,7 @@
 String repo = "archlinux"
 rel_date = sh (
     script: "date +%Y.%m.01"
-    returnStatus: true
+    returnStdout: true
 ).trim()
 
 node ("master") {
