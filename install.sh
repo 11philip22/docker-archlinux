@@ -37,13 +37,13 @@ sed -i '\~\[options\]~a # Do not extract the following folders from any packages
 /etc/pacman.conf
 
 # install base
-pacman -S base grep --noconfirm
+pacman -S base --noconfirm
 
 # Updating packages currently installed
 pacman -Syu --noconfirm
 
 # install packages
-pacman -S vim openssl-1.0 --noconfirm
+pacman -S vim grep openssl-1.0 --noconfirm
 
 # create locale
 echo en_US.UTF-8 UTF-8 > /etc/locale.gen
