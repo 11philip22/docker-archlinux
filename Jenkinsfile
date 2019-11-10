@@ -1,3 +1,4 @@
+String dockerHubUser = "philipwold" 
 String repo = "archlinux"
 
 node ("master") {
@@ -5,16 +6,16 @@ node ("master") {
         checkout scm
     }
     
-    // stage ("run dos2unix") {
-    //     sh "dos2unix *"
-    // }
+    stage ("run dos2unix") {
+        sh "find . -type f -print0 | xargs -0 dos2unix"
+    }
     
     stage ("prepare rootfs") {
         rel_date = sh (
             script: "date +%Y.%m.01",
             returnStdout: true
         ).trim()
-        sh """
+        sh """\
             wget -O archlinux.tar.gz \
                 http://archlinux.de-labrusse.fr/iso/latest/archlinux-bootstrap-${rel_date}-x86_64.tar.gz
             
@@ -23,7 +24,7 @@ node ("master") {
     }
     
     stage ("docker build") {
-        def mpd_image = docker.build("philipwold/${repo}")
+        def mpd_image = docker.build("${dockerHubUser}/${repo}")
         mpd_image.push()
     }
     
