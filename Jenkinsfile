@@ -1,6 +1,11 @@
 String dockerHubUser = "philipwold" 
 String repo = "archlinux"
 
+environment {
+    registry = "${dockerHubUser}/${repo}"
+    registryCredential = ‘docker-hub’
+}
+
 node ("master") {
     stage ("checkout scm") {
         checkout scm
