@@ -24,8 +24,8 @@ echo "lock-never" >> /etc/pacman.d/gnupg/gpg.conf
 echo "keyserver hkp://ipv4.pool.sks-keyservers.net" >> /etc/pacman.d/gnupg/gpg.conf
 echo "keyserver-options timeout=10" >> /etc/pacman.d/gnupg/gpg.conf
 
-# force pacman db refresh and install sed package
-pacman -Sy sed --noconfirm
+# force pacman db refresh and install packages
+pacman -Sy sed vim grep wget --noconfirm
 
 # configure pacman to not extract certain folders from packages being installed
 # this is done as we strip out locale, man, docs etc when we build the arch-scratch image
@@ -37,13 +37,10 @@ sed -i '\~\[options\]~a # Do not extract the following folders from any packages
 /etc/pacman.conf
 
 # install base
-pacman -S base --noconfirm
+# pacman -S base --noconfirm
 
 # Updating packages currently installed
 pacman -Syu --noconfirm
-
-# install packages
-pacman -S vim grep openssl-1.0 --noconfirm
 
 # create locale
 echo en_US.UTF-8 UTF-8 > /etc/locale.gen
