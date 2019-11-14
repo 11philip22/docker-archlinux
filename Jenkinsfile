@@ -35,7 +35,7 @@ node ("master") {
     stage ("docker build") {
         def mpd_image = docker.build("${dockerHubUser}/${repo}")
         mpd_image.push()
-    }qqqqq
+    }
     
     stage ("cleanup") {
         sh "rm archlinux.tar.gz"

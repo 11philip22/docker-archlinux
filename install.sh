@@ -44,8 +44,8 @@ sed -i '\~\[options\]~a # Do not extract the following folders from any packages
 /etc/pacman.conf
 
 # remove unneeded packages
-echo -e "\e[32m[INFO] Removing bloat\e[0m"
-pacman -Rsc e2fsprogs --noconfirm
+# echo -e "\e[32m[INFO] Removing bloat\e[0m"
+# pacman -Rsc e2fsprogs --noconfirm
 
 # Updating packages currently installed
 echo -e "\e[32m[INFO] Performing update\e[0m"
