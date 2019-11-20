@@ -1,8 +1,8 @@
 String dockerHubUser = "philipwold" 
 String repo = "archlinux"
 
-try {
-    node ("master") {
+node ("master") {
+    try {
         stage ("checkout scm") {
             checkout scm
         }
@@ -38,17 +38,17 @@ try {
             sh "rm -rf archlinux.tar.gz"
         }
     }
-}
 
-catch(err){
-    println(err.toString())
-    error(err.getMessage())
-    currentBuild.result = 'FAILED'
-    exception_msg = err.getMessage();
-}
+    catch(err){
+        println(err.toString())
+        error(err.getMessage())
+        currentBuild.result = 'FAILED'
+        exception_msg = err.getMessage();
+    }
 
-finally {
-    stage('Clean Workspace') {
-        cleanWs()
+    finally {
+        stage('Clean Workspace') {
+            cleanWs()
+        }
     }
 }
